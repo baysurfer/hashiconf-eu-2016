@@ -20,12 +20,19 @@ gcloud sql instances describe hashiapp
 
 ```
 mysql -u root -h <database-ip> -p
-Enter password: 
+Enter password:
 ```
 
 ```
 mysql> CREATE DATABASE hashiapp;
 ```
+## Edit the server-install.sh and client-install.sh files
+Replace YOUR_API_TOKEN_HERE with the token you generate in your Circonus account.
+
+telemetry {
+	circonus_api_token = "YOUR_API_TOKEN_HERE"
+}
+
 
 ## Bootstrap a Nomad Cluster
 

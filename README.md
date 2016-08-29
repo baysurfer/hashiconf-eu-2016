@@ -4,6 +4,7 @@
 ## Prerequisites
 
 [Bootstrap the HashiStack on Google Compute Engine](hashistack.md)
+[Once this is done you'll see your metrics flowing into your Circonus account.]
 
 Login into the controller node and checkout this repository.
 
