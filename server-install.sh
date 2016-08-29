@@ -6,14 +6,14 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget https://releases.hashicorp.com/nomad/0.4.0-rc1/nomad_0.4.0-rc1_linux_amd64.zip
-unzip nomad_0.4.0-rc1_linux_amd64.zip
+wget https://releases.hashicorp.com/nomad/0.4.1/nomad_0.4.1_linux_amd64.zip
+unzip nomad_0.4.1_linux_amd64.zip
 mv nomad /usr/local/bin/
 
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
 
-rm nomad_0.4.0-rc1_linux_amd64.zip
+rm nomad_0.4.1_linux_amd64.zip
 
 cat > server.hcl <<EOF
 addresses {
@@ -35,6 +35,11 @@ server {
     enabled = true
     bootstrap_expect = 3
 }
+
+telemetry {
+	circonus_api_token = "YOUR_API_TOKEN_HERE"
+}
+
 EOF
 sed -i "s/ADVERTISE_ADDR/${IP_ADDRESS}/" server.hcl
 mv server.hcl /etc/nomad/server.hcl
@@ -61,10 +66,20 @@ systemctl start nomad
 
 mkdir -p /var/lib/consul
 
-wget https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_linux_amd64.zip
-unzip consul_0.6.4_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/0.7.0-rc1/consul_0.7.0-rc1_linux_amd64.zip
+unzip consul_0.7.0-rc1_linux_amd64.zip
 mv consul /usr/local/bin/consul
-rm consul_0.6.4_linux_amd64.zip
+rm consul_0.7.0-rc1_linux_amd64.zip
+
+mkdir -p /etc/consul
+
+cat > /etc/consul/consul.hcl <<'EOF'
+{
+	"telemetry": {
+		"circonus_api_token": "YOUR_API_TOKEN_HERE"
+	}
+}
+EOF
 
 cat > consul.service <<'EOF'
 [Unit]
@@ -79,7 +94,8 @@ ExecStart=/usr/local/bin/consul agent \
   -client=0.0.0.0 \
   -data-dir=/var/lib/consul \
   -server \
-  -ui
+  -ui \
+  -config-file=/etc/consul/consul.hcl
   
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=65536
@@ -95,10 +111,10 @@ systemctl start consul
 
 ## Setup Vault
 
-wget https://releases.hashicorp.com/vault/0.6.0/vault_0.6.0_linux_amd64.zip
-unzip vault_0.6.0_linux_amd64.zip
+wget https://releases.hashicorp.com/vault/0.6.1/vault_0.6.1_linux_amd64.zip
+unzip vault_0.6.1_linux_amd64.zip
 mv vault /usr/local/bin/vault
-rm vault_0.6.0_linux_amd64.zip
+rm vault_0.6.1_linux_amd64.zip
 
 mkdir -p /etc/vault
 
@@ -113,6 +129,11 @@ listener "tcp" {
   address = "ADVERTISE_ADDR:8200"
   tls_disable = 1
 }
+
+telemetry {
+	circonus_api_token = "YOUR_API_TOKEN_HERE"
+}
+
 EOF
 
 sed -i "s/ADVERTISE_ADDR/${IP_ADDRESS}/" /etc/vault/vault.hcl
