@@ -21,6 +21,8 @@ cd hashiconf-napa-2016
 ```
 
 ### Create the Hashiapp Policy and Token
+```
+export VAULT_ADDR=http://ns-1:8200`
 
 ```
 vault policy-write hashiapp vault/hashiapp-policy.hcl
