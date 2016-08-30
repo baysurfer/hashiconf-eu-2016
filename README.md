@@ -27,16 +27,16 @@ export VAULT_ADDR=http://ns-1:8200
 ```
 
 ```
-vault policy-write circhashi vault/hashiapp-policy.hcl
+vault policy-write hashiapp vault/hashiapp-policy.hcl
 ```
 
 ```
 vault token-create \
-  -policy="circhashi" \
-  -display-name="circhashi"
+  -policy="hashiapp" \
+  -display-name="hashiapp"
 ```
 
-Edit `jobs/circhashi.nomad` job with TOKEN AND MYSQL address
+Edit `jobs/hashiapp.nomad` job with TOKEN AND MYSQL address
 
 ```
 env {
@@ -46,10 +46,10 @@ env {
 }
 ```
 
-### Create the Circhashi Secret
+### Create the Hashiapp Secret
 
 ```
-vault write secret/circhashi jwtsecret=secret
+vault write secret/hashiapp jwtsecret=secret
 ```
 
 ## Service Discovery with Consul
@@ -82,32 +82,32 @@ nomad status fabio
 
 ## Hashiapp Job
 
-Submit the circhashi service job.
+Submit the hashiapp service job.
 
 ```
-nomad run jobs/circhashi.nomad
+nomad run jobs/hashiapp.nomad
 ```
 
 ```
-nomad status circhashi
+nomad status hashiapp
 ```
 
 #### Viewing Logs
 
 ```
-nomad fs -job circhashi alloc/logs/circhashi.stderr.0
-nomad fs -job circhashi alloc/logs/circhashi.stdout.0
+nomad fs -job hashiapp alloc/logs/hashiapp.stderr.0
+nomad fs -job hashiapp alloc/logs/hashiapp.stdout.0
 ```
 
 #### Send Traffic
 
 ```
-curl -H "Host: circhashi.com" http://<loadbalancer-ip>:9999/version
+curl -H "Host: hashiapp.com" http://<loadbalancer-ip>:9999/version
 ```
 
 ### Scaling Up
 
-Edit `jobs/circhashi.nomad`
+Edit `jobs/hashiapp.nomad`
 
 ```
 count = 5
