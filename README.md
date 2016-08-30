@@ -13,7 +13,7 @@ gcloud compute ssh ns-1
 ```
 
 ```
-git clone https://github.com/baysurfer/hashiconf-napa-2016
+git clone https://github.com/vynjo/hashiconf-napa-2016
 ```
 
 ```
@@ -22,7 +22,7 @@ cd hashiconf-napa-2016
 
 ### Create the Hashiapp Policy and Token
 ```
-export VAULT_ADDR=http://ns-1:8200`
+export VAULT_ADDR=http://ns-1:8200
 
 ```
 vault policy-write hashiapp vault/hashiapp-policy.hcl
@@ -34,7 +34,7 @@ vault token-create \
   -display-name="hashiapp"
 ```
 
-Edit `jobs/hashiapp.nomad` job
+Edit `jobs/hashiapp.nomad` job with TOKEN AND MYSQL address
 
 ```
 env {
