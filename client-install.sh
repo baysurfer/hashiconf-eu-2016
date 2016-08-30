@@ -27,7 +27,7 @@ advertise {
 }
 
 telemetry {
-	circonus_api_token = "YOUR_API_TOKEN_HERE"
+	circonus_api_token = "7339c41b-48ab-617e-8859-c60ab96edb90"
 }
 
 data_dir  = "/var/lib/nomad"

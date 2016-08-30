@@ -1,8 +1,8 @@
-path "secret/hashiapp" {
+path "secret/circhashi" {
   capabilities = ["read", "list"]
 }
 
-path "mysql/creds/hashiapp" {
+path "mysql/creds/circhashi" {
   capabilities = ["read", "list"]
 }
 

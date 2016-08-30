@@ -1,4 +1,4 @@
-job "hashiapp" {
+job "circhashi" {
   datacenters = ["dc1"]
   type = "service"
 
@@ -19,7 +19,7 @@ job "hashiapp" {
       env {
         VAULT_TOKEN = ""
         VAULT_ADDR = "http://vault.service.consul:8200"
-        CIRCHASHI_DB_HOST = ""
+        circhashi_DB_HOST = ""
       }
 
       artifact {
