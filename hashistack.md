@@ -103,7 +103,7 @@ vault write mysql/config/connection connection_url="USERNAME:PASSWORD@tcp(HOST:P
 
 ```
 vault write mysql/roles/hashiapp \
-  sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT ALL PRIVILEGES ON circhashi.* TO '{{name}}'@'%';"
+  sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT ALL PRIVILEGES ON hashiapp.* TO '{{name}}'@'%';"
 ```
 
 ### Bootstrap Nomad Worker Nodes
