@@ -27,16 +27,16 @@ export VAULT_ADDR=http://ns-1:8200
 ```
 
 ```
-vault policy-write hashiapp vault/hashiapp-policy.hcl
+vault policy-write circhashi vault/hashiapp-policy.hcl
 ```
 
 ```
 vault token-create \
-  -policy="hashiapp" \
-  -display-name="hashiapp"
+  -policy="circhashi" \
+  -display-name="circhashi"
 ```
 
-Edit `jobs/hashiapp.nomad` job with TOKEN AND MYSQL address
+Edit `jobs/circhashi.nomad` job with TOKEN AND MYSQL address
 
 ```
 env {
@@ -46,10 +46,10 @@ env {
 }
 ```
 
-### Create the Hashiapp Secret
+### Create the Circhashi Secret
 
 ```
-vault write secret/hashiapp jwtsecret=secret
+vault write secret/circhashi jwtsecret=secret
 ```
 
 ## Service Discovery with Consul
