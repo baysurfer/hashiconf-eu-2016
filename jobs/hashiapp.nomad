@@ -7,23 +7,23 @@ job "hashiapp" {
     max_parallel = 1
   }
 
-  group "circhashi" {
+  group "hashiapp" {
     count = 3
 
-    task "circhashi" {
+    task "hashiapp" {
       driver = "exec"
       config {
-        command = "circhashi"
+        command = "hashiapp"
       }
 
       env {
         VAULT_TOKEN = ""
         VAULT_ADDR = "http://vault.service.consul:8200"
-        CIRCHASHI_DB_HOST = ""
+        HASHIAPP_DB_HOST = ""
       }
 
       artifact {
-        source = "https://storage.googleapis.com/hashistack/circhashi/v1.0.0/circhashi"
+        source = "https://storage.googleapis.com/hashistack/hashiapp/v1.0.0/hashiapp"
         options {
           checksum = "sha256:a58ee8c9eb38f2ce45edfbd71547cc66dcb68464b901fe8c89675ad2e12d2135"
         }
@@ -39,8 +39,8 @@ job "hashiapp" {
       }
 
       service {
-        name = "circhashi"
-        tags = ["urlprefix-circhashi.com/"]
+        name = "hashiapp"
+        tags = ["urlprefix-hashiapp.com/"]
         port = "http"
         check {
           type = "http"
