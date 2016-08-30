@@ -3,19 +3,19 @@
 ## Provision MySQL
 
 ```
-gcloud sql instances create circhashi \
+gcloud sql instances create hashiapp \
   --tier db-n1-standard-1 \
   --activation-policy ALWAYS \
   --authorized-networks 0.0.0.0/0
 ```
 
 ```
-gcloud sql instances set-root-password circhashi \
+gcloud sql instances set-root-password hashiapp \
   --password <password>
 ```
 
 ```
-gcloud sql instances describe circhashi
+gcloud sql instances describe hashiapp
 ```
 
 ```
@@ -24,7 +24,7 @@ Enter password:
 ```
 
 ```
-mysql> CREATE DATABASE circhashi;
+mysql> CREATE DATABASE hashiapp;
 ```
 ## Edit the server-install.sh and client-install.sh files
 Replace YOUR_API_TOKEN_HERE with the token you generate in your Circonus account.
@@ -102,7 +102,7 @@ vault write mysql/config/connection connection_url="USERNAME:PASSWORD@tcp(HOST:P
 ```
 
 ```
-vault write mysql/roles/circhashi \
+vault write mysql/roles/hashiapp \
   sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT ALL PRIVILEGES ON circhashi.* TO '{{name}}'@'%';"
 ```
 
