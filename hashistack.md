@@ -10,7 +10,7 @@ gcloud sql instances create circhashi \
 ```
 
 ```
-gcloud sql instances set-root-password circhasi \
+gcloud sql instances set-root-password circhashi \
   --password <password>
 ```
 
@@ -98,8 +98,7 @@ vault mount mysql
 ```
 
 ```
-vault write mysql/config/connection \
-> connection_url="USERNAME:PASSWORD@tcp(HOST:PORT)/"
+vault write mysql/config/connection connection_url="USERNAME:PASSWORD@tcp(HOST:PORT)/"
 ```
 
 ```
