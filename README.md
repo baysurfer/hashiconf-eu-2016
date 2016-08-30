@@ -21,8 +21,7 @@ cd hashiconf-napa-2016
 ```
 
 ### Create the Hashiapp Policy and Token
-```
-export VAULT_ADDR=http://ns-1:8200
+
 
 ```
 vault policy-write hashiapp vault/hashiapp-policy.hcl
@@ -38,7 +37,7 @@ Edit `jobs/hashiapp.nomad` job with TOKEN AND MYSQL address
 
 ```
 env {
-  VAULT_TOKEN = "HASHIAPP_TOKEN"
+  VAULT_TOKEN = "HASHIAPP_TOKEN" 
   VAULT_ADDR = "http://vault.service.consul:8200"
   HASHIAPP_DB_HOST = "CLOUD_SQL:3306"
 }
