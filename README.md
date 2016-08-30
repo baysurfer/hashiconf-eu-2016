@@ -82,32 +82,32 @@ nomad status fabio
 
 ## Hashiapp Job
 
-Submit the hashiapp service job.
+Submit the circhashi service job.
 
 ```
-nomad run jobs/hashiapp.nomad
+nomad run jobs/circhashi.nomad
 ```
 
 ```
-nomad status hashiapp
+nomad status circhashi
 ```
 
 #### Viewing Logs
 
 ```
-nomad fs -job hashiapp alloc/logs/hashiapp.stderr.0
-nomad fs -job hashiapp alloc/logs/hashiapp.stdout.0
+nomad fs -job circhashi alloc/logs/circhashi.stderr.0
+nomad fs -job circhashi alloc/logs/circhashi.stdout.0
 ```
 
 #### Send Traffic
 
 ```
-curl -H "Host: hashiapp.com" http://<loadbalancer-ip>:9999/version
+curl -H "Host: circhashi.com" http://<loadbalancer-ip>:9999/version
 ```
 
 ### Scaling Up
 
-Edit `jobs/hashiapp.nomad`
+Edit `jobs/circhashi.nomad`
 
 ```
 count = 5
