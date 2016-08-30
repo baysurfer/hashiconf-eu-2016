@@ -53,6 +53,7 @@ vault write secret/hashiapp jwtsecret=secret
 ```
 
 ## Service Discovery with Consul
+ Edit `jobs/consul.nomad` to include `args = ["agent", "-data-dir", "/var/lib/consul"]` TESTING STILL to include telemetry
 
 ```
 nomad run jobs/consul.nomad
