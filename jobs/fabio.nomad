@@ -14,9 +14,9 @@ job "fabio" {
       }
 
       artifact {
-        source = "https://storage.googleapis.com/hashistack/fabio/v1.1.3/fabio"
+        source = "https://storage.cloud.google.com/circonus-hashistack.appspot.com/fabio/fabio"
         options {
-          checksum = "sha256:7adc20402773d425a8e45b40cc29efc832172a152ea743f8eeefffa0fbbe6023"
+          checksum = "sha256:4f8bb75cde09eddd35db9a6ee0c699f8a1caecdeab6f6b6e96b82886c2d46047"
         }
       }
 
