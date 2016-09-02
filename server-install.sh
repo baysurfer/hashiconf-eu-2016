@@ -66,7 +66,7 @@ systemctl start nomad
 
 mkdir -p /var/lib/consul
 
-wget https://releases.hashicorp.com/consul/0.7.0-rc1/consul_0.7.0-rc1_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/0.7.0-rc2/consul_0.7.0-rc2_linux_amd64.zip
 unzip consul_0.7.0-rc1_linux_amd64.zip
 mv consul /usr/local/bin/consul
 rm consul_0.7.0-rc1_linux_amd64.zip
