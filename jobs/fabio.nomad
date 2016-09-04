@@ -11,12 +11,13 @@ job "fabio" {
       driver = "exec"
       config {
         command = "fabio"
+                args = ["-metrics.circonus.apikey", "CIRCONUS_API_TOKEN", "-metrics.target", "circonus", "-metrics.names", "{{.Service}}`{{.Host}}{{.Path}}`latency_ns"]
       }
 
       artifact {
         source = "https://storage.googleapis.com/circonus-hashistack.appspot.com/fabio/1.2.1/fabio"
         options {
-          checksum = "sha256:c716dfba9bc6ab936bccc4653ce39301e276251e01a849decf7f06d8bba582e0"
+          checksum = "sha256:b2a36f48abd0cf5226d95bc505799a1513279da7f12a75a5bc406d220ec60c40"
         }
       }
 
