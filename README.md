@@ -72,6 +72,7 @@ consul members
 ```
 
 ## Load Balancing with Fabio
+Edit the jobs/fabio.nomad file and enter your API TOKEN
 
 ```
 nomad run jobs/fabio.nomad
