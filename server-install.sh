@@ -76,7 +76,7 @@ mkdir -p /etc/consul
 cat > /etc/consul/consul.hcl <<'EOF'
 {
 	"telemetry": {
-		"circonus_api_token": "7339c41b-48ab-617e-8859-c60ab96edb90"
+		"circonus_api_token": "YOUR_API_TOKEN_HERE"
 	}
 }
 EOF
@@ -131,7 +131,7 @@ listener "tcp" {
 }
 
 telemetry {
-	circonus_api_token = "7339c41b-48ab-617e-8859-c60ab96edb90"
+	circonus_api_token = "YOUR_API_TOKEN_HERE"
 }
 
 EOF
