@@ -90,7 +90,7 @@ nomad status fabio
 Submit the hashiapp service job.
 
 ```
-nomad run jobs/hashiapp.nomad
+nomad run jobs/hashiapp-v1-c3.nomad
 ```
 
 ```
@@ -112,25 +112,16 @@ curl -H "Host: hashiapp.com" http://<loadbalancer-ip>:9999/version
 
 ### Scaling Up
 
-Edit `jobs/hashiapp.nomad`
+Run the `jobs/nomad run jobs/hashiapp-v1-c10.nomad` which starts 10 allocations instead of 3
 
 ```
-count = 5
-```
-
-```
-nomad run jobs/hashiapp.nomad
+nomad run jobs/hashiapp-v1-c10.nomad
 ```
 
 ### Rolling Upgrades
 
-Edit `jobs/hashiapp.nomad`
+Run `jobs/hashiapp-v2-c10.nomad` or `jobs/hashiapp-v2-c3.nomad`
 
 ```
-source = "https://storage.googleapis.com/hashistack/hashiapp/v2.0.0/hashiapp"
-checksum = "sha256:372ddaeb9ac97a2eecd7dd3307bd32f8b0c188d47239f7ef6790609f9a157ca4"
-```
-
-```
-nomad run jobs/hashiapp.nomad
+nomad run jobs/hashiapp-v2-c10.nomad.nomad
 ```
