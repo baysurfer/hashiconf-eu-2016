@@ -64,6 +64,17 @@ mv nomad.service /etc/systemd/system/nomad.service
 systemctl enable nomad
 systemctl start nomad
 
+
+## Setup up Consul Config file for telemetry
+
+mkdir -p /etc/consul
+
+cat > /etc/consul/consul.hcl <<EOF
+telemetry {
+	circonus_api_token = "YOUR_API_TOKEN_HERE"
+}
+EOF
+
 ## Setup dnsmasq
 
 mkdir -p /etc/dnsmasq.d
