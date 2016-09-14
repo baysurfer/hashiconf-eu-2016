@@ -107,6 +107,7 @@ consul join nc-1 nc-2 nc-3 nc-4 nc-5
 consul members
 ```
 
+<<<<<<< HEAD
 ## Start Load Balancing with Fabio
 Edit the jobs/fabio.nomad file and replace CIRCONUS_API_TOKEN with your Circonus api token
 
@@ -118,6 +119,8 @@ nomad run jobs/fabio.nomad
 nomad status fabio
 ```
 
+=======
+>>>>>>> kelseyhightower/master
 ## Hashiapp Job
 
 Submit the hashiapp service job.
@@ -137,7 +140,21 @@ nomad fs -job hashiapp alloc/logs/hashiapp.stderr.0
 nomad fs -job hashiapp alloc/logs/hashiapp.stdout.0
 ```
 
+<<<<<<< HEAD
 
+=======
+## Load Balancing with Fabio
+
+run curl on a private intance
+
+```
+nomad run jobs/fabio.nomad
+```
+
+```
+nomad status fabio
+```
+>>>>>>> kelseyhightower/master
 
 #### Send Traffic
 
@@ -145,6 +162,10 @@ nomad fs -job hashiapp alloc/logs/hashiapp.stdout.0
 curl -H "Host: hashiapp.com" http://<loadbalancer-ip>:9999/version
 ```
 or
+```
+while true; do curl -H "Host: hashiapp.com" http://<loadbalancer-ip>:9999/version; sleep 1; done
+```
+
 ```
 while true; do curl -H "Host: hashiapp.com" http://<loadbalancer-ip>:9999/version; sleep 1; done
 ```
@@ -177,4 +198,13 @@ Run `jobs/hashiapp-v2-c10.nomad` or `jobs/hashiapp-v2-c3.nomad`
 nomad run jobs/hashiapp-v2-c10.nomad.nomad
 
 ```
+<<<<<<< HEAD
 You'll be able to see the 
+=======
+nomad plan jobs/hashiapp.nomad
+```
+
+```
+nomad run jobs/hashiapp.nomad
+```
+>>>>>>> kelseyhightower/master
