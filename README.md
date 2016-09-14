@@ -107,7 +107,6 @@ consul join nc-1 nc-2 nc-3 nc-4 nc-5
 consul members
 ```
 
-<<<<<<< HEAD
 ## Start Load Balancing with Fabio
 Edit the jobs/fabio.nomad file and replace CIRCONUS_API_TOKEN with your Circonus api token
 
@@ -120,7 +119,7 @@ nomad status fabio
 ```
 
 =======
->>>>>>> kelseyhightower/master
+
 ## Hashiapp Job
 
 Submit the hashiapp service job.
