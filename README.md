@@ -139,7 +139,6 @@ nomad fs -job hashiapp alloc/logs/hashiapp.stderr.0
 nomad fs -job hashiapp alloc/logs/hashiapp.stdout.0
 ```
 
-<<<<<<< HEAD
 
 =======
 ## Load Balancing with Fabio
@@ -153,7 +152,6 @@ nomad run jobs/fabio.nomad
 ```
 nomad status fabio
 ```
->>>>>>> kelseyhightower/master
 
 #### Send Traffic
 
