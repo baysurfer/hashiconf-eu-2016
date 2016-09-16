@@ -17,10 +17,10 @@ job "hashiapp" {
       }
 
       env {
-        VAULT_TOKEN = ""
-        VAULT_ADDR = "http://vault.service.consul:8200"
-        HASHIAPP_DB_HOST = ""
-      }
+	  	VAULT_TOKEN = "HASHIAPP_TOKEN" 
+	  	VAULT_ADDR = "http://vault.service.consul:8200"
+	  	HASHIAPP_DB_HOST = "CLOUD_SQL:3306"
+     }
 
       artifact {
         source = "https://storage.googleapis.com/circonus-hashistack.appspot.com/hashiapp/v2/hashiapp"

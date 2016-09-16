@@ -1,4 +1,4 @@
-# This is basis of the demo that Circonus was using at HashiConf NAPA 2016. 
+# This is basis of the demo that Circonus was using at HashiConf NAPA 2016.
 
 <p>It is based based on kelseyhightower's awesome [Hashconf EU 2016 presentation] (https://github.com/kelseyhightower/hashiconf-eu-2016).
 Well, more than based on, a minor update to include telemetry data for each of the components (Consul, Nomad, Vault, as well as Fabio).</p>
@@ -11,7 +11,7 @@ Well, more than based on, a minor update to include telemetry data for each of t
   <img src="http://www.vynjo.com/files/hashistack/hashistack_diagram.png" width="100%"/>
 </p>
 
-#Overview 
+#Overview
 Once you have completed the setup, you will have:
 <ul>
 <li>a 3 node server cluster (ns-1, ns-2, ns-3) running Consul, Nomad, and Vault servers. Each member of the cluster will AUTOMATICALLY create a corresponding set of Circonus metrics for each of the servers (Consul, Nomad, and Vault). These metrics will include the all important latency metrics (represented via histograms in Circonus), as well as basic information on CPU, Memory, and Disk utilization</li>
@@ -28,7 +28,7 @@ Now that you have the basic infrastructure, you'll then launch two nomad jobs
 
 These nomad jobs are configured to run a single allocation on each of the 5 clients, and each will produce a corresponding set of Circonus metrics
 
-Finally, you will launch a simple application called 'hashiapp' via one of the server cluster machines (ns-1), and you can experiment with starting and stopping an application, adjusting the allocation count (there are versions with 3, and 10 allocationssd) and again, viewing the 
+Finally, you will launch a simple application called 'hashiapp' via one of the server cluster machines (ns-1), and you can experiment with starting and stopping an application, adjusting the allocation count (there are versions with 3, and 10 allocationssd) and again, viewing the
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ Edit `jobs/hashiapp.nomad` job with TOKEN AND MYSQL address
 
 ```
 env {
-  VAULT_TOKEN = "HASHIAPP_TOKEN" 
+  VAULT_TOKEN = "HASHIAPP_TOKEN"
   VAULT_ADDR = "http://vault.service.consul:8200"
   HASHIAPP_DB_HOST = "CLOUD_SQL:3306"
 }
@@ -107,7 +107,6 @@ consul join nc-1 nc-2 nc-3 nc-4 nc-5
 consul members
 ```
 
-<<<<<<< HEAD
 ## Start Load Balancing with Fabio
 Edit the jobs/fabio.nomad file and replace CIRCONUS_API_TOKEN with your Circonus api token
 
@@ -119,8 +118,6 @@ nomad run jobs/fabio.nomad
 nomad status fabio
 ```
 
-=======
->>>>>>> kelseyhightower/master
 ## Hashiapp Job
 
 Submit the hashiapp service job.
@@ -139,23 +136,6 @@ nomad status hashiapp
 nomad fs -job hashiapp alloc/logs/hashiapp.stderr.0
 nomad fs -job hashiapp alloc/logs/hashiapp.stdout.0
 ```
-
-<<<<<<< HEAD
-
-=======
-## Load Balancing with Fabio
-
-run curl on a private intance
-
-```
-nomad run jobs/fabio.nomad
-```
-
-```
-nomad status fabio
-```
->>>>>>> kelseyhightower/master
-
 #### Send Traffic
 
 ```
@@ -166,28 +146,17 @@ or
 while true; do curl -H "Host: hashiapp.com" http://<loadbalancer-ip>:9999/version; sleep 1; done
 ```
 
-```
-while true; do curl -H "Host: hashiapp.com" http://<loadbalancer-ip>:9999/version; sleep 1; done
-```
-
 ### Scaling Up
 
 Run the `jobs/nomad run jobs/hashiapp-v1-c10.nomad` which starts 10 allocations instead of 3
 
 ```
-<<<<<<< HEAD
 nomad run jobs/hashiapp-v1-c10.nomad
 =======
-count = 5
+count = 10
 ```
 
-```
-nomad plan jobs/hashiapp.nomad
-```
 
-```
-nomad run jobs/hashiapp.nomad
->>>>>>> kelseyhightower/master
 ```
 
 ### Rolling Upgrades
@@ -195,16 +164,3 @@ nomad run jobs/hashiapp.nomad
 Run `jobs/hashiapp-v2-c10.nomad` or `jobs/hashiapp-v2-c3.nomad`
 
 ```
-nomad run jobs/hashiapp-v2-c10.nomad.nomad
-
-```
-<<<<<<< HEAD
-You'll be able to see the 
-=======
-nomad plan jobs/hashiapp.nomad
-```
-
-```
-nomad run jobs/hashiapp.nomad
-```
->>>>>>> kelseyhightower/master

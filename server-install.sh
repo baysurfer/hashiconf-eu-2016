@@ -37,7 +37,7 @@ server {
 }
 
 telemetry {
-	circonus_api_token = "YOUR_API_TOKEN_HERE"
+	circonus_api_token = "7339c41b-48ab-617e-8859-c60ab96edb90"
 }
 
 EOF
@@ -66,17 +66,17 @@ systemctl start nomad
 
 mkdir -p /var/lib/consul
 
-wget https://releases.hashicorp.com/consul/0.7.0-rc2/consul_0.7.0-rc2_linux_amd64.zip
-unzip consul_0.7.0-rc1_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/0.7.0/consul_0.7.0_linux_amd64.zip
+unzip consul_0.7.0_linux_amd64.zip
 mv consul /usr/local/bin/consul
-rm consul_0.7.0-rc1_linux_amd64.zip
+rm consul_0.7.0_linux_amd64.zip
 
 mkdir -p /etc/consul
 
 cat > /etc/consul/consul.hcl <<'EOF'
 {
 	"telemetry": {
-		"circonus_api_token": "YOUR_API_TOKEN_HERE"
+		"circonus_api_token": "7339c41b-48ab-617e-8859-c60ab96edb90"
 	}
 }
 EOF
@@ -131,7 +131,7 @@ listener "tcp" {
 }
 
 telemetry {
-	circonus_api_token = "YOUR_API_TOKEN_HERE"
+	circonus_api_token = "7339c41b-48ab-617e-8859-c60ab96edb90"
 }
 
 EOF

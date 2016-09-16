@@ -26,7 +26,7 @@ MYSQL_IPADDRESS=$(gcloud sql instances describe hashiapp \
 mysql -u root -h $MYSQL_IPADDRESS -p
 ```
 ```
-Enter password: 
+Enter password:
 ```
 
 ```
