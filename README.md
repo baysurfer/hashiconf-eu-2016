@@ -153,15 +153,20 @@ Run the `jobs/nomad run jobs/hashiapp-v1-c10.nomad` which starts 10 allocations 
 
 ```
 nomad run jobs/hashiapp-v1-c10.nomad
-=======
-count = 10
-```
-
 
 ```
+Then you can switch to v2 by running
+```
+nomad run jobs/hashiapp-v2-c10.nomad
+
+```
+
 
 ### Rolling Upgrades
 
-Run `jobs/hashiapp-v2-c10.nomad` or `jobs/hashiapp-v2-c3.nomad`
+Change up the jobs by running `jobs/hashiapp-v1-c3.nomad` or `jobs/hashiapp-v2-c3.nomad`
 
+or via your local machine:
+```
+gcloud compute ssh ns-1 nomad run hashiconf-napa-2016/jobs/hashiapp-v2-c10.nomad
 ```
