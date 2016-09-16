@@ -118,6 +118,11 @@ nomad run jobs/fabio.nomad
 nomad status fabio
 ```
 
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> origin/master
 ## Hashiapp Job
 
 Submit the hashiapp service job.
@@ -136,6 +141,24 @@ nomad status hashiapp
 nomad fs -job hashiapp alloc/logs/hashiapp.stderr.0
 nomad fs -job hashiapp alloc/logs/hashiapp.stdout.0
 ```
+<<<<<<< HEAD
+=======
+
+
+=======
+## Load Balancing with Fabio
+
+run curl on a private intance
+
+```
+nomad run jobs/fabio.nomad
+```
+
+```
+nomad status fabio
+```
+
+>>>>>>> origin/master
 #### Send Traffic
 
 ```
