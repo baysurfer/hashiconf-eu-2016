@@ -27,8 +27,7 @@ advertise {
 }
 
 telemetry {
-	circonus_api_token = "7339c41b-48ab-617e-8859-c60ab96edb90"
-	circonus_check_search_tag = "hashistack:dc-1-nomad-agent"
+	circonus_api_token = "CIRCONUS_API_TOKEN"
 }
 
 data_dir  = "/var/lib/nomad"
@@ -73,7 +72,7 @@ mkdir -p /etc/consul
 cat > /etc/consul/consul.hcl <<EOF
 {
 	"telemetry": {
-		"circonus_api_token": "7339c41b-48ab-617e-8859-c60ab96edb90"
+		"circonus_api_token": "CIRCONUS_API_TOKEN"
 	}
 }
 EOF
