@@ -117,7 +117,7 @@ vault write mysql/roles/hashiapp \
 gcloud compute instances create nc-1 nc-2 nc-3 nc-4 nc-5 \
   --image-project ubuntu-os-cloud \
   --image-family ubuntu-1604-lts \
-  --machine-type f1-micro \
+  --machine-type g1-small \
   --can-ip-forward \
   --metadata-from-file startup-script=client-install.sh
 ```
