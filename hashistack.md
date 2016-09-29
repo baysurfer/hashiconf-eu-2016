@@ -40,7 +40,7 @@ telemetry {
 }
 ```
 
-## Bootstrap a Nomad Cluster
+## Bootstrap a Nomad Cluster (g1-small vs n1-standard-1)
 
 This step will also install Nomad, Consul, and Vault.
 
@@ -49,7 +49,7 @@ gcloud compute instances create ns-1 ns-2 ns-3 \
   --image-project ubuntu-os-cloud \
   --image-family ubuntu-1604-lts \
   --boot-disk-size 200GB \
-  --machine-type n1-standard-1 \
+  --machine-type g1-small \
   --can-ip-forward \
   --metadata-from-file startup-script=server-install.sh
 ```
@@ -112,14 +112,14 @@ vault write mysql/roles/hashiapp \
   sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT ALL PRIVILEGES ON hashiapp.* TO '{{name}}'@'%';"
 ```
 
-### Bootstrap Nomad Worker Nodes
+### Bootstrap Nomad Worker Nodes (f1-micro vs n1-standard-1)
 
 ```
 gcloud compute instances create nc-1 nc-2 nc-3 nc-4 nc-5 \
   --image-project ubuntu-os-cloud \
   --image-family ubuntu-1604-lts \
   --boot-disk-size 200GB \
-  --machine-type n1-standard-1 \
+  --machine-type f1-micro \
   --can-ip-forward \
   --metadata-from-file startup-script=client-install.sh
 ```
