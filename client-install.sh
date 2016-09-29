@@ -6,14 +6,14 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget https://releases.hashicorp.com/nomad/0.4.1/nomad_0.4.1_linux_amd64.zip
-unzip nomad_0.4.1_linux_amd64.zip
+wget http://www.vynjo.com/files/hashistack/nomad.zip
+unzip nomad.zip
 mv nomad /usr/local/bin/
 
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
 
-rm nomad_0.4.1_linux_amd64.zip
+rm nomad.zip
 
 cat > client.hcl <<EOF
 addresses {
