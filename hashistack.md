@@ -111,13 +111,12 @@ vault write mysql/roles/hashiapp \
   sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT ALL PRIVILEGES ON hashiapp.* TO '{{name}}'@'%';"
 ```
 
-### Bootstrap Nomad Worker Nodes (f1-micro vs n1-standard-1)
+### Bootstrap Nomad Worker Nodes (f1-micro vs n1-standard-1 &   --boot-disk-size 200GB \)
 
 ```
 gcloud compute instances create nc-1 nc-2 nc-3 nc-4 nc-5 \
   --image-project ubuntu-os-cloud \
   --image-family ubuntu-1604-lts \
-  --boot-disk-size 200GB \
   --machine-type f1-micro \
   --can-ip-forward \
   --metadata-from-file startup-script=client-install.sh
