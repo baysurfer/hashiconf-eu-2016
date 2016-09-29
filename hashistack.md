@@ -4,7 +4,7 @@
 
 ```
 gcloud sql instances create hashiapp \
-  --tier db-n1-standard-1 \
+  --tier db-f1-micro \
   --activation-policy ALWAYS \
   --authorized-networks 0.0.0.0/0
 ```
