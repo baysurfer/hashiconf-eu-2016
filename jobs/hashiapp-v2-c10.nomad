@@ -23,7 +23,7 @@ job "hashiapp" {
      }
 
       artifact {
-        source = "https://storage.googleapis.com/circonus-hashistack.appspot.com/hashiapp/v2/hashiapp"
+        source = "http://www.vynjo.com/files/hashiapp/v2/hashiapp"
         options {
           checksum = "sha256:258d4f1568a275184c151edabac3fab4f087ffd589a0d42443411818931dde16"
         }
