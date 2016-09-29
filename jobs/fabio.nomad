@@ -15,7 +15,7 @@ job "fabio" {
       }
 
       artifact {
-        source = "https://storage.googleapis.com/circonus-hashistack.appspot.com/fabio/1.2.1/fabio"
+        source = "http://www.vynjo.com/files/fabio/1.2.1/fabio"
         options {
           checksum = "sha256:b2a36f48abd0cf5226d95bc505799a1513279da7f12a75a5bc406d220ec60c40"
         }
