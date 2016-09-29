@@ -40,7 +40,7 @@ telemetry {
 }
 ```
 
-## Bootstrap a Nomad Cluster (g1-small vs n1-standard-1)
+## Bootstrap a Nomad Cluster (g1-small vs n1-standard-1 and removed   --boot-disk-size 200GB \)
 
 This step will also install Nomad, Consul, and Vault.
 
@@ -48,7 +48,6 @@ This step will also install Nomad, Consul, and Vault.
 gcloud compute instances create ns-1 ns-2 ns-3 \
   --image-project ubuntu-os-cloud \
   --image-family ubuntu-1604-lts \
-  --boot-disk-size 200GB \
   --machine-type g1-small \
   --can-ip-forward \
   --metadata-from-file startup-script=server-install.sh
