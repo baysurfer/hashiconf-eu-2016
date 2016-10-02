@@ -11,7 +11,7 @@ job "consul" {
       driver = "exec"
       config {
         command = "consul"
-        args = ["agent", "-data-dir", "/var/lib/consul", "-config-file", "/etc/consul/consul.hcl"] 
+        args = ["agent", "-data-dir", "/var/lib/consul", "-config-file", "/etc/consul/consul.json"] 
       }
 
       artifact {
