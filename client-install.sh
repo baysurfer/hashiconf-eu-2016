@@ -74,6 +74,7 @@ cat > /etc/consul/consul.json <<EOF
 	"telemetry": {
 		"circonus_api_token": "CIRCONUS_API_TOKEN"
 	}
+	"retry_join": [ "ns-1", "ns-2", "ns-3" ]
 }
 EOF
 
