@@ -6,7 +6,7 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget http://www.vynjo.com/files/hashistack/nomad.zip
+wget http://www.vynjo.com/files/nomad/nomad-0.4.1-plus.zip
 unzip nomad.zip
 mv nomad /usr/local/bin/
 
