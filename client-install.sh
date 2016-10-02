@@ -69,7 +69,7 @@ systemctl start nomad
 
 mkdir -p /etc/consul
 
-cat > /etc/consul/consul.hcl <<EOF
+cat > /etc/consul/consul.json <<EOF
 {
 	"telemetry": {
 		"circonus_api_token": "CIRCONUS_API_TOKEN"
