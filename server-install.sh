@@ -73,7 +73,7 @@ rm consul.zip
 
 mkdir -p /etc/consul
 
-cat > /etc/consul/consul.hcl <<'EOF'
+cat > /etc/consul/consul.json <<'EOF'
 {
 	"telemetry": {
 		"circonus_api_token": "CIRCONUS_API_TOKEN"
@@ -95,7 +95,7 @@ ExecStart=/usr/local/bin/consul agent \
   -data-dir=/var/lib/consul \
   -server \
   -ui \
-  -config-file=/etc/consul/consul.hcl
+  -config-file=/etc/consul/consul.json
   
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=65536
