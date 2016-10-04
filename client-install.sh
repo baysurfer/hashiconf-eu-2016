@@ -28,6 +28,8 @@ advertise {
 
 telemetry {
 	circonus_api_token = "CIRCONUS_API_TOKEN"
+        publish_allocation_metrics = "true"
+        publish_node_metrics = "true"
 }
 
 data_dir  = "/var/lib/nomad"
