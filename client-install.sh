@@ -35,9 +35,9 @@ advertise {
 }
 
 telemetry {
-		circonus_api_token = "7339c41b-48ab-617e-8859-c60ab96edb90"
-        publish_allocation_metrics = "true"
-        publish_node_metrics = "true"
+	circonus_api_token = "CIRCONUS_API_TOKEN"
+	publish_allocation_metrics = "true"
+	publish_node_metrics = "true"
 }
 
 data_dir  = "/var/lib/nomad"
