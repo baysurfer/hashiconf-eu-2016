@@ -6,16 +6,16 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-# wget https://releases.hashicorp.com/nomad/0.5.0-rc1/nomad_0.5.0-rc1_linux_amd64.zip
-# 
-# unzip nomad_0.5.0-rc1_linux_amd64.zip
-# 
-# mv nomad /usr/local/bin/
+wget https://releases.hashicorp.com/nomad/0.5.0-rc2/nomad_0.5.0-rc2_linux_amd64.zip
 
-wget http://www.vynjo.com/files/nomad0.5.0rc1-patched.xz
-unxz nomad0.5.0rc1-patched.xz
-chmod +x nomad0.5.0rc1-patched.xz
-mv nomad0.5.0rc1-patched /usr/local/bin/nomad
+unzip nomad_0.5.0-rc2_linux_amd64.zip
+
+mv nomad /usr/local/bin/
+
+mkdir -p /var/lib/nomad
+mkdir -p /etc/nomad
+
+rm nomad_0.5.0-rc2_linux_amd64.zip
 
 
 mkdir -p /var/lib/nomad
