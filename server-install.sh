@@ -7,13 +7,19 @@ apt-get update
 apt-get install -y unzip dnsmasq
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 wget https://releases.hashicorp.com/nomad/0.5.1/nomad_0.5.1_linux_amd64.zip
 unzip nomad_0.5.1_linux_amd64.zip
 =======
+=======
+>>>>>>> origin/master
 wget https://releases.hashicorp.com/nomad/0.5.0-rc2/nomad_0.5.0-rc2_linux_amd64.zip
 
 unzip nomad_0.5.0-rc2_linux_amd64.zip
 
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 mv nomad /usr/local/bin/
 
@@ -21,7 +27,11 @@ mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 rm nomad_0.5.1_linux_amd64.zip
+=======
+rm nomad_0.5.0-rc2_linux_amd64.zip
+>>>>>>> origin/master
 =======
 rm nomad_0.5.0-rc2_linux_amd64.zip
 >>>>>>> origin/master
@@ -126,15 +136,21 @@ systemctl start consul
 ## Setup Vault
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 wget https://releases.hashicorp.com/vault/0.6.3/vault_0.6.3_linux_amd64.zip
 unzip vault_0.6.3_linux_amd64.zip
 mv vault /usr/local/bin/vault
 rm vault_0.6.3_linux_amd64.zip
 =======
+=======
+>>>>>>> origin/master
 wget https://releases.hashicorp.com/vault/0.6.2/vault_0.6.2_linux_amd64.zip
 unzip vault_0.6.2_linux_amd64.zip
 mv vault /usr/local/bin/vault
 rm vault_0.6.2_linux_amd64.zip
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 
 mkdir -p /etc/vault
