@@ -6,14 +6,25 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget http://www.vynjo.com/files/nomad/nomad-0.4.1-plus.zip
-unzip nomad.zip
+<<<<<<< HEAD
+wget https://releases.hashicorp.com/nomad/0.5.1/nomad_0.5.1_linux_amd64.zip
+unzip nomad_0.5.1_linux_amd64.zip
+=======
+wget https://releases.hashicorp.com/nomad/0.5.0-rc2/nomad_0.5.0-rc2_linux_amd64.zip
+
+unzip nomad_0.5.0-rc2_linux_amd64.zip
+
+>>>>>>> origin/master
 mv nomad /usr/local/bin/
 
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
 
-rm nomad.zip
+<<<<<<< HEAD
+rm nomad_0.5.1_linux_amd64.zip
+=======
+rm nomad_0.5.0-rc2_linux_amd64.zip
+>>>>>>> origin/master
 
 cat > server.hcl <<EOF
 addresses {
@@ -38,6 +49,7 @@ server {
 
 telemetry {
 	circonus_api_token = "CIRCONUS_API_TOKEN"
+	circonus_check_tags = "role:server, service:nomad"
 }
 
 EOF
@@ -66,10 +78,10 @@ systemctl start nomad
 
 mkdir -p /var/lib/consul
 
-wget http://www.vynjo.com/files/hashistack/consul.zip
-unzip consul.zip
+wget https://releases.hashicorp.com/consul/0.7.1/consul_0.7.1_linux_amd64.zip
+unzip consul_0.7.1_linux_amd64.zip
 mv consul /usr/local/bin/consul
-rm consul.zip
+rm consul_0.7.1_linux_amd64.zip
 
 mkdir -p /etc/consul
 
@@ -77,6 +89,8 @@ cat > /etc/consul/consul.json <<'EOF'
 {
 	"telemetry": {
 		"circonus_api_token": "CIRCONUS_API_TOKEN"
+		"circonus_check_tags": "role:server, service:consul"
+
 	}
 }
 EOF
@@ -111,10 +125,17 @@ systemctl start consul
 
 ## Setup Vault
 
-wget http://www.vynjo.com/files/hashistack/vault.zip
-unzip vault.zip
+<<<<<<< HEAD
+wget https://releases.hashicorp.com/vault/0.6.3/vault_0.6.3_linux_amd64.zip
+unzip vault_0.6.3_linux_amd64.zip
 mv vault /usr/local/bin/vault
-rm vault.zip
+rm vault_0.6.3_linux_amd64.zip
+=======
+wget https://releases.hashicorp.com/vault/0.6.2/vault_0.6.2_linux_amd64.zip
+unzip vault_0.6.2_linux_amd64.zip
+mv vault /usr/local/bin/vault
+rm vault_0.6.2_linux_amd64.zip
+>>>>>>> origin/master
 
 mkdir -p /etc/vault
 
