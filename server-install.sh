@@ -6,8 +6,8 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget https://releases.hashicorp.com/nomad/0.5.5/nomad_0.5.5-rc1_linux_amd64.zip
-unzip nomad_0.5.5-rc1_linux_amd64.zip
+wget https://releases.hashicorp.com/nomad/0.5.5/nomad_0.5.5_linux_amd64.zip
+unzip nomad_0.5.5_linux_amd64.zip
 chmod +x nomad
 mv nomad /usr/local/bin/nomad
 
@@ -15,7 +15,7 @@ mv nomad /usr/local/bin/nomad
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
 
-rm nomad_0.5.5-rc1_linux_amd64.zip
+rm nomad_0.5.5_linux_amd64.zip
 
 cat > server.hcl <<EOF
 addresses {
