@@ -36,7 +36,7 @@ server {
 }
 
 telemetry {
-	circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
+	circonus_api_token = "CIRCONUS_API_TOKEN"
 	circonus_check_tags = "source:gcp-cjm, type:server, service:hashistack, service:nomad"
      circonus_submission_interval = "1s"
      publish_node_metrics = "true"
@@ -78,7 +78,7 @@ mkdir -p /etc/consul
 cat > /etc/consul/consul.json <<'EOF'
 {
 	"telemetry": {
-          "circonus_api_token": "2c1518f9-10ae-49b8-9b04-c386616aae09",
+          "circonus_api_token": "CIRCONUS_API_TOKEN",
           "circonus_check_tags":  "source:gcp-cjm, type:server, service:consul, service:hashistack",
           "circonus_submission_interval": "1s"
 	}
@@ -135,7 +135,7 @@ listener "tcp" {
 }
 
 telemetry {
-	circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
+	circonus_api_token = "CIRCONUS_API_TOKEN"
 	circonus_check_tags = "source:gcp-cjm, type:server, service:hashistack, service:vault"
      circonus_submission_interval = "1s"
 }
