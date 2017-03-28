@@ -1,7 +1,7 @@
 # This is basis of the demo that Circonus was using at HashiConf NAPA 2016.
 
-<p>It is based based on kelseyhightower's awesome [Hashconf EU 2016 presentation] (https://github.com/kelseyhightower/hashiconf-eu-2016).
-Well, more than based on, a minor update to include telemetry data for each of the components (Consul, Nomad, Vault, as well as Fabio).</p>
+It is based based on kelseyhightower's awesome [Hashconf EU 2016 presentation](https://github.com/kelseyhightower/hashiconf-eu-2016).
+Well, more than based on, a minor update to include telemetry data for each of the components (Consul, Nomad, Vault, as well as Fabio).
 
 <p>Completely awesome example showing the power of Hashicorp's products, with a little bit of Circonus magic thrown in.</p>
 
