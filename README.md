@@ -11,7 +11,7 @@ Well, more than based on, a minor update to include telemetry data for each of t
   <img src="http://www.vynjo.com/files/hashistack/hashistack_diagram.png" width="100%"/>
 </p>
 
-#Overview
+## Overview
 Once you have completed the setup, you will have:
 <ul>
 <li>a 3 node server cluster (ns-1, ns-2, ns-3) running Consul, Nomad, and Vault servers. Each member of the cluster will AUTOMATICALLY create a corresponding set of Circonus metrics for each of the servers (Consul, Nomad, and Vault). These metrics will include the all important latency metrics (represented via histograms in Circonus), as well as basic information on CPU, Memory, and Disk utilization</li>
