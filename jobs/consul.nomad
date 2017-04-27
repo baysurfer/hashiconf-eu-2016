@@ -11,14 +11,11 @@ job "consul" {
       driver = "exec"
       config {
         command = "consul"
-        args = ["agent", "-data-dir", "/var/lib/consul", "-config-file", "/etc/consul/consul.json"] 
+        args = ["agent", "-data-dir", "/var/lib/consul", "-config-file", "/etc/consul/consul.json"]
       }
 
       artifact {
-        source = "https://releases.hashicorp.com/consul/0.7.0/consul_0.7.0_linux_amd64.zip"
-        options {
-          checksum = "sha256:b350591af10d7d23514ebaa0565638539900cdb3aaa048f077217c4c46653dd8"
-        }
+        source = "https://releases.hashicorp.com/consul/0.8.1/consul_0.8.1_linux_amd64.zip"
       }
 
       resources {
