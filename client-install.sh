@@ -30,8 +30,13 @@ telemetry {
 	circonus_api_token = "CIRCONUS_API_TOKEN"
 	publish_allocation_metrics = "true"
 	publish_node_metrics = "true"
+<<<<<<< HEAD
 	circonus_check_tags = "type:client, service:hashistack, service:nomad"
      circonus_submission_interval = "5s"
+=======
+	circonus_check_tags = "source:gcp-cjm, type:client, service:hashistack, service:nomad"
+        circonus_submission_interval = "1s"
+>>>>>>> origin/master
 }
 
 data_dir  = "/var/lib/nomad"
@@ -76,7 +81,9 @@ mkdir -p /etc/consul
 cat > /etc/consul/consul.json <<EOF
 {
 	"telemetry": {
-		"circonus_api_token": "CIRCONUS_API_TOKEN"
+		"circonus_api_token": "CIRCONUS_API_TOKEN",
+          "circonus_check_tags": "source:gcp-cjm, type:client, service:hashistack, service:consul",
+          "circonus_submission_interval": "1s"
 	},
 
 	"retry_join": [ "ns-1", "ns-2", "ns-3" ]

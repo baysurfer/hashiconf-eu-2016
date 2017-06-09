@@ -1,7 +1,7 @@
 # This is basis of the demo that Circonus was using at HashiConf NAPA 2016.
 
-<p>It is based based on kelseyhightower's awesome [Hashconf EU 2016 presentation] (https://github.com/kelseyhightower/hashiconf-eu-2016).
-Well, more than based on, a minor update to include telemetry data for each of the components (Consul, Nomad, Vault, as well as Fabio).</p>
+It is based based on kelseyhightower's awesome [Hashconf EU 2016 presentation](https://github.com/kelseyhightower/hashiconf-eu-2016).
+Well, more than based on, a minor update to include telemetry data for each of the components (Consul, Nomad, Vault, as well as Fabio).
 
 <p>Completely awesome example showing the power of Hashicorp's products, with a little bit of Circonus magic thrown in.</p>
 
@@ -11,7 +11,7 @@ Well, more than based on, a minor update to include telemetry data for each of t
   <img src="http://www.vynjo.com/files/hashistack/hashistack_diagram.png" width="100%"/>
 </p>
 
-#Overview
+## Overview
 Once you have completed the setup, you will have:
 <ul>
 <li>a 3 node server cluster (ns-1, ns-2, ns-3) running Consul, Nomad, and Vault servers. Each member of the cluster will AUTOMATICALLY create a corresponding set of Circonus metrics for each of the servers (Consul, Nomad, and Vault). These metrics will include the all important latency metrics (represented via histograms in Circonus), as well as basic information on CPU, Memory, and Disk utilization</li>
