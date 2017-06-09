@@ -6,25 +6,15 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-<<<<<<< HEAD
 wget https://releases.hashicorp.com/nomad/0.5.6/nomad_0.5.6_linux_amd64.zip
 unzip nomad_0.5.6_linux_amd64.zip
 chmod +x nomad
-=======
-wget https://releases.hashicorp.com/nomad/0.5.5/nomad_0.5.5_linux_amd64.zip
-unzip nomad_0.5.5_linux_amd64.zip
->>>>>>> origin/master
 mv nomad /usr/local/bin/nomad
-rm nomad_0.5.5_linux_amd64.zip
+rm nomad_0.5.6_linux_amd64.zip
 
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
 
-<<<<<<< HEAD
-rm nomad_0.5.6_linux_amd64.zip
-
-=======
->>>>>>> origin/master
 cat > server.hcl <<EOF
 addresses {
     rpc  = "ADVERTISE_ADDR"
@@ -48,7 +38,7 @@ server {
 
 telemetry {
 	circonus_api_token = "CIRCONUS_API_TOKEN"
-	circonus_check_tags = "source:gcp-cjm, type:server, service:hashistack, service:nomad"
+	circonus_check_tags = "source:gcp, type:server, service:hashistack, service:nomad"
      circonus_submission_interval = "1s"
      publish_node_metrics = "true"
 }
@@ -79,17 +69,10 @@ systemctl start nomad
 
 mkdir -p /var/lib/consul
 
-<<<<<<< HEAD
 wget https://releases.hashicorp.com/consul/0.8.1/consul_0.8.1_linux_amd64.zip
-unzip consul_0.8.1_linux_amd64.zip
+unzip consul_0.8.3_linux_amd64.zip
 mv consul /usr/local/bin/consul
-rm consul_0.8.1_linux_amd64.zip
-=======
-wget https://releases.hashicorp.com/consul/0.7.5/consul_0.7.5_linux_amd64.zip
-unzip consul_0.7.5_linux_amd64.zip
-mv consul /usr/local/bin/consul
-rm consul_0.7.5_linux_amd64.zip
->>>>>>> origin/master
+rm consul_0.8.3_linux_amd64.zip
 
 mkdir -p /etc/consul
 
@@ -97,7 +80,7 @@ cat > /etc/consul/consul.json <<'EOF'
 {
 	"telemetry": {
           "circonus_api_token": "CIRCONUS_API_TOKEN",
-          "circonus_check_tags":  "source:gcp-cjm, type:server, service:consul, service:hashistack",
+          "circonus_check_tags":  "source:gcp, type:server, service:consul, service:hashistack",
           "circonus_submission_interval": "1s"
 	}
 }
@@ -133,17 +116,10 @@ systemctl start consul
 
 ## Setup Vault
 
-<<<<<<< HEAD
-wget https://releases.hashicorp.com/vault/0.7.0-beta1/vault_0.7.0-beta1_linux_amd64.zip
-unzip vault_0.7.0-beta1_linux_amd64.zip
+wget https://releases.hashicorp.com/vault/0.7.3/vault_0.7.3_linux_amd64.zip
+unzip vault_0.7.3_linux_amd64.zip
 mv vault /usr/local/bin/vault
-rm vault_0.7.0-beta1_linux_amd64.zip
-=======
-wget https://releases.hashicorp.com/vault/0.7.0/vault_0.7.0_linux_amd64.zip
-unzip vault_0.7.0_linux_amd64.zip
-mv vault /usr/local/bin/vault
-rm vault_0.7.0_linux_amd64.zip
->>>>>>> origin/master
+rm vault_0.7.3_linux_amd64.zip
 
 mkdir -p /etc/vault
 
@@ -161,7 +137,7 @@ listener "tcp" {
 
 telemetry {
 	circonus_api_token = "CIRCONUS_API_TOKEN"
-	circonus_check_tags = "source:gcp-cjm, type:server, service:hashistack, service:vault"
+	circonus_check_tags = "source:gcp, type:server, service:hashistack, service:vault"
      circonus_submission_interval = "1s"
 }
 
