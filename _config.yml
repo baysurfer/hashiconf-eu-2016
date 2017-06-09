@@ -1,0 +1,8 @@
+title: Hashiconf-napa-2016
+description: HashiConf EU 2016 with Telemetry
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
