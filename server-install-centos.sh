@@ -2,6 +2,7 @@
 
 export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
   http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip)
+
 yum update
 yum install -y unzip
 yum install -y dnsmasq
@@ -40,7 +41,7 @@ server {
 
 telemetry {
 	circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
-	circonus_check_tags = "type:server, service:hashistack, service:nomad"
+	circonus_check_tags = "source:gcp, type:server, service:hashistack, service:nomad"
      circonus_submission_interval = "1s"
      publish_node_metrics = "true"
 }
@@ -103,7 +104,7 @@ cat > /etc/consul/consul.json <<'EOF'
 {
 	"telemetry": {
 		"circonus_api_token": "CIRCONUS-API-TOKEN",
-		"circonus_check_tags": "type:server, service:consul, service:hashistack"
+		"circonus_check_tags": "source:gcp, type:server, service:consul, service:hashistack"
 	}
 }
 EOF
@@ -159,7 +160,7 @@ service consul start
 
 ## Setup Vault
 
-wget https://releases.hashicorp.com/vault/0.7.0-beta1/vault_0.7.0-beta1_linux_amd64.zip
+wget https://releases.hashicorp.com/vault/0.7.3/vault_0.7.3_linux_amd64.zip
 unzip vault_0.7.0-beta1_linux_amd64.zip
 mv vault /usr/local/bin/vault
 rm vault_0.7.0-beta1_linux_amd64.zip
@@ -180,7 +181,7 @@ listener "tcp" {
 
 telemetry {
 	circonus_api_token = "CIRCONUS-API-TOKEN"
-	circonus_check_tags = "type:server, service:hashistack, service:vault"
+	circonus_check_tags = "source:gcp, type:server, service:hashistack, service:vault"
 }
 
 EOF
