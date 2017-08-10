@@ -6,11 +6,11 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget https://releases.hashicorp.com/nomad/0.5.6/nomad_0.5.6_linux_amd64.zip
-unzip nomad_0.5.6_linux_amd64.zip
+wget https://releases.hashicorp.com/nomad/0.6.0/nomad_0.6.0_linux_amd64.zip
+unzip nomad_0.6.0_linux_amd64.zip
 chmod +x nomad
 mv nomad /usr/local/bin/nomad
-rm nomad_0.5.6_linux_amd64.zip
+rm nomad_0.6.0_linux_amd64.zip
 
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
@@ -69,10 +69,10 @@ systemctl start nomad
 
 mkdir -p /var/lib/consul
 
-wget https://releases.hashicorp.com/consul/0.8.5/consul_0.8.5_linux_amd64.zip
-unzip consul_0.8.5_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/0.9.1/consul_0.9.1_linux_amd64.zip
+unzip consul_0.9.1_linux_amd64.zip
 mv consul /usr/local/bin/consul
-rm consul_0.8.5_linux_amd64.zip
+rm consul_0.9.1_linux_amd64.zip
 
 mkdir -p /etc/consul
 
@@ -116,10 +116,10 @@ systemctl start consul
 
 ## Setup Vault
 
-wget https://releases.hashicorp.com/vault/0.7.3/vault_0.7.3_linux_amd64.zip
-unzip vault_0.7.3_linux_amd64.zip
+wget https://releases.hashicorp.com/vault/0.8.0/vault_0.8.0_linux_amd64.zip
+unzip vault_0.8.0_linux_amd64.zip
 mv vault /usr/local/bin/vault
-rm vault_0.7.3_linux_amd64.zip
+rm vault_0.8.0_linux_amd64.zip
 
 mkdir -p /etc/vault
 
