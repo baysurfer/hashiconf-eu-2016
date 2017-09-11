@@ -6,11 +6,10 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget https://releases.hashicorp.com/nomad/0.6.0/nomad_0.6.0_linux_amd64.zip
-unzip nomad_0.6.0_linux_amd64.zip
-chmod +x nomad
+wget https://releases.hashicorp.com/nomad/0.6.2/nomad_0.6.2_linux_amd64.zip
+unzip nomad_0.6.2_linux_amd64.zip
 mv nomad /usr/local/bin/nomad
-rm nomad_0.6.0_linux_amd64.zip
+rm nomad_0.6.2_linux_amd64.zip
 
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
@@ -37,9 +36,9 @@ server {
 }
 
 telemetry {
-	circonus_api_token = "CIRCONUS_API_TOKEN"
-	circonus_check_tags = "source:gcp, type:server, service:hashistack, service:nomad"
-     circonus_submission_interval = "1s"
+	circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
+	circonus_check_tags = "source:gcp-cjm, type:server, service:hashistack, service:nomad"
+     circonus_submission_interval = "10s"
      publish_node_metrics = "true"
 }
 
@@ -69,19 +68,19 @@ systemctl start nomad
 
 mkdir -p /var/lib/consul
 
-wget https://releases.hashicorp.com/consul/0.9.1/consul_0.9.1_linux_amd64.zip
-unzip consul_0.9.1_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/0.9.3/consul_0.9.3_linux_amd64.zip
+unzip consul_0.9.3_linux_amd64.zip
 mv consul /usr/local/bin/consul
-rm consul_0.9.1_linux_amd64.zip
+rm consul_0.9.3_linux_amd64.zip
 
 mkdir -p /etc/consul
 
 cat > /etc/consul/consul.json <<'EOF'
 {
 	"telemetry": {
-          "circonus_api_token": "CIRCONUS_API_TOKEN",
-          "circonus_check_tags":  "source:gcp, type:server, service:consul, service:hashistack",
-          "circonus_submission_interval": "1s"
+          "circonus_api_token": "2c1518f9-10ae-49b8-9b04-c386616aae09",
+          "circonus_check_tags":  "source:gcp-cjm, type:server, service:consul, service:hashistack",
+          "circonus_submission_interval": "10s"
 	}
 }
 EOF
@@ -116,10 +115,10 @@ systemctl start consul
 
 ## Setup Vault
 
-wget https://releases.hashicorp.com/vault/0.8.0/vault_0.8.0_linux_amd64.zip
-unzip vault_0.8.0_linux_amd64.zip
+wget https://releases.hashicorp.com/vault/0.8.2/vault_0.8.2_linux_amd64.zip
+unzip vault_0.8.2_linux_amd64.zip
 mv vault /usr/local/bin/vault
-rm vault_0.8.0_linux_amd64.zip
+rm vault_0.8.2_linux_amd64.zip
 
 mkdir -p /etc/vault
 
@@ -136,9 +135,9 @@ listener "tcp" {
 }
 
 telemetry {
-	circonus_api_token = "CIRCONUS_API_TOKEN"
-	circonus_check_tags = "source:gcp, type:server, service:hashistack, service:vault"
-     circonus_submission_interval = "1s"
+	circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
+	circonus_check_tags = "source:gcp-cjm, type:server, service:hashistack, service:vault"
+     circonus_submission_interval = "10s"
 }
 
 EOF
