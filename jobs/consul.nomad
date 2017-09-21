@@ -15,7 +15,7 @@ job "consul" {
       }
 
       artifact {
-        source = "https://releases.hashicorp.com/consul/0.8.1/consul_0.8.1_linux_amd64.zip"
+        source = "https://releases.hashicorp.com/consul/0.8.3/consul_0.8.3_linux_amd64.zip"
       }
 
       resources {
