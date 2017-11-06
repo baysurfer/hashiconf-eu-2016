@@ -6,14 +6,14 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget https://releases.hashicorp.com/nomad/0.6.3/nomad_0.6.3_linux_amd64.zip
-unzip nomad_0.6.3_linux_amd64.zip
+wget https://releases.hashicorp.com/nomad/0.7.0/nomad_0.7.0_linux_amd64.zip
+unzip nomad_0.7.0_linux_amd64.zip
 mv nomad /usr/local/bin/
 
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
 
-rm nomad_0.6.3_linux_amd64.zip
+rm nomad_0.7.0_linux_amd64.zip
 
 cat > client.hcl <<EOF
 addresses {
@@ -27,10 +27,10 @@ advertise {
 }
 
 telemetry {
-	circonus_api_token = "CIRCONUS_API_TOKEN"
+	circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
 	publish_allocation_metrics = "true"
 	publish_node_metrics = "true"
-	circonus_check_tags = "source:gcp, type:client, service:hashistack, service:nomad"
+	circonus_check_tags = "source:gcp-cjm, type:client, service:hashistack, service:nomad"
      circonus_submission_interval = "1s"
 }
 
@@ -40,7 +40,7 @@ log_level = "DEBUG"
 client {
     enabled = true
     servers = [
-      "ns-1", "ns-2", "ns-3"
+      "ns-1", "ns-2", "ns-3c"
     ]
     options {
         "driver.raw_exec.enable" = "1"
@@ -76,12 +76,12 @@ mkdir -p /etc/consul
 cat > /etc/consul/consul.json <<EOF
 {
 	"telemetry": {
-		"circonus_api_token": "CIRCONUS_API_TOKEN",
-          "circonus_check_tags": "source:gcp, type:client, service:hashistack, service:consul",
+		"circonus_api_token": "2c1518f9-10ae-49b8-9b04-c386616aae09",
+          "circonus_check_tags": "source:gcp-cjm, type:client, service:hashistack, service:consul",
           "circonus_submission_interval": "1s"
 	},
 
-	"retry_join": [ "ns-1", "ns-2", "ns-3" ]
+	"retry_join": [ "ns-1", "ns-2", "ns-3c" ]
 }
 EOF
 
