@@ -7,10 +7,10 @@ yum update
 yum install -y unzip
 yum install -y dnsmasq
 
-wget https://releases.hashicorp.com/nomad/0.7.1/nomad_0.7.1_linux_amd64.zip
-unzip nomad_0.7.1_linux_amd64.zip
+wget https://releases.hashicorp.com/nomad/0.8.3/nomad_0.8.3_linux_amd64.zip
+unzip nomad_0.8.3_linux_amd64.zip
 mv nomad /usr/local/bin/nomad
-rm nomad_0.7.1_linux_amd64.zip
+rm nomad_0.8.3_linux_amd64.zip
 
 
 mkdir -p /var/lib/nomad
@@ -23,29 +23,24 @@ addresses {
     rpc  = "ADVERTISE_ADDR"
     serf = "ADVERTISE_ADDR"
 }
-
 advertise {
     http = "ADVERTISE_ADDR:4646"
     rpc  = "ADVERTISE_ADDR:4647"
     serf = "ADVERTISE_ADDR:4648"
 }
-
 bind_addr = "0.0.0.0"
 data_dir  = "/var/lib/nomad"
 log_level = "DEBUG"
-
 server {
     enabled = true
     bootstrap_expect = 3
 }
-
 telemetry {
-	circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
-	circonus_check_tags = "source:gcp, type:server, service:hashistack, service:nomad"
+	   circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
+	   circonus_check_tags = "source:gcp, type:server, service:hashistack, service:nomad"
      circonus_submission_interval = "1s"
      publish_node_metrics = "true"
 }
-
 EOF
 sed -i "s/ADVERTISE_ADDR/${IP_ADDRESS}/" server.hcl
 mv server.hcl /etc/nomad/server.hcl
@@ -93,10 +88,10 @@ service nomad start
 
 mkdir -p /var/lib/consul
 
-wget https://releases.hashicorp.com/consul/1.0.6/consul_1.0.6_linux_amd64.zip
-unzip consul_1.0.6_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/1.1.0/consul_1.1.0_linux_amd64.zip
+unzip consul_1.1.0_linux_amd64.zip
 mv consul /usr/local/bin/consul
-rm consul_1.0.6_linux_amd64.zip
+rm consul_1.1.0_linux_amd64.zip
 
 mkdir -p /etc/consul
 
@@ -104,7 +99,7 @@ cat > /etc/consul/consul.json <<'EOF'
 {
         "telemetry": {
           "circonus_api_token": "2c1518f9-10ae-49b8-9b04-c386616aae09",
-          "circonus_check_tags":  "source:gcp-cjm, type:server, service:consul, service:hashistack",
+          "circonus_check_tags":  "source:gcp, type:server, service:consul, service:hashistack",
           "circonus_submission_interval": "1s"
         }
 }
@@ -161,10 +156,10 @@ service consul start
 
 ## Setup Vault
 
-wget https://releases.hashicorp.com/vault/0.9.5/vault_0.9.5_linux_amd64.zip
-unzip vault_0.9.5_linux_amd64.zip
+wget https://releases.hashicorp.com/vault/0.10.1/vault_0.10.1_linux_amd64.zip
+unzip vault_0.10.1_linux_amd64.zip
 mv vault /usr/local/bin/vault
-rm vault_0.9.5_linux_amd64.zip
+rm vault_0.10.1_linux_amd64.zip
 
 mkdir -p /etc/vault
 
@@ -174,17 +169,14 @@ backend "consul" {
   address = "127.0.0.1:8500"
   path = "vault"
 }
-
 listener "tcp" {
   address = "ADVERTISE_ADDR:8200"
   tls_disable = 1
 }
-
 telemetry {
 	circonus_api_token = "2c1518f9-10ae-49b8-9b04-c386616aae09"
 	circonus_check_tags = "source:gcp, type:server, service:hashistack, service:vault"
 }
-
 EOF
 
 sed -i "s/ADVERTISE_ADDR/${IP_ADDRESS}/" /etc/vault/vault.hcl
