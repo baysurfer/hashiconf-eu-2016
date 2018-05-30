@@ -6,14 +6,14 @@ export IP_ADDRESS=$(curl -s -H "Metadata-Flavor: Google" \
 apt-get update
 apt-get install -y unzip dnsmasq
 
-wget https://releases.hashicorp.com/nomad/0.7.0/nomad_0.7.0_linux_amd64.zip
-unzip nomad_0.7.0_linux_amd64.zip
+wget https://releases.hashicorp.com/nomad/0.8.3/nomad_0.8.3_linux_amd64.zip
+unzip nomad_0.8.3_linux_amd64.zip
 mv nomad /usr/local/bin/
 
 mkdir -p /var/lib/nomad
 mkdir -p /etc/nomad
 
-rm nomad_0.7.0_linux_amd64.zip
+rm nomad_0.8.3_linux_amd64.zip
 
 cat > client.hcl <<EOF
 addresses {
@@ -30,7 +30,7 @@ telemetry {
 	circonus_api_token = "YOUR_API_TOKEN_HERE"
 	publish_allocation_metrics = "true"
 	publish_node_metrics = "true"
-	circonus_check_tags = "source:gcp-cjm, type:client, service:hashistack, service:nomad"
+	circonus_check_tags = "source:gcp, type:client, service:hashistack, service:nomad"
      circonus_submission_interval = "1s"
 }
 
@@ -77,7 +77,7 @@ cat > /etc/consul/consul.json <<EOF
 {
 	"telemetry": {
 	  "circonus_api_token": "YOUR_API_TOKEN_HERE",
-          "circonus_check_tags": "source:gcp-cjm, type:client, service:hashistack, service:consul",
+          "circonus_check_tags": "source:gcp, type:client, service:hashistack, service:consul",
           "circonus_submission_interval": "1s"
 	},
 
